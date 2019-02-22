@@ -17,6 +17,7 @@ from django.urls import path, include
 from pages.urls import pages_patterns
 from profiles.urls import profiles_patterns
 from messenger.urls import messenger_patterns
+from maps.urls import maps_patterns
 from django.conf import settings
 
 urlpatterns = [
@@ -30,9 +31,18 @@ urlpatterns = [
     path('profiles/', include(profiles_patterns)),
     # Paths de Messenger
     path('messenger/', include(messenger_patterns)),
+    #Paths de los maps
+    path('maps/',include(maps_patterns)),
+
+    path('natural/',include('natural.urls')),
     
 ]
 
 if settings.DEBUG:
     from django.conf.urls.static import static
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+#Perzonalizacion del admin
+admin.site.site_header = "Administracion de Toolbox Ases"
+admin.site.index_title = "Panel de administrador"
+admin.site.site_title = "Administracion Ases"

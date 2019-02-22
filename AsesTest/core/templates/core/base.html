@@ -8,10 +8,16 @@
     <!-- Fuentes -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.27/esri/css/esri.css">
     <!-- Estilos -->
     <link href="{% static 'core/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'core/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'core/css/main.css' %}" rel="stylesheet">
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
   </head>
   <body>
     <body>
@@ -27,9 +33,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'home' %}">Inicio</a>
               </li>
-              <li class="nav-item">
+              <!--<li class="nav-item">
                 <a class="nav-link" href="{% url 'pages:pages' %}">Páginas</a>
-              </li>
+              </li>-->
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'profiles:list' %}">Perfiles</a>
               </li>
@@ -39,15 +45,22 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'login'%}">Acceder </a> 
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'singup' %}">Registro </a> 
-              </li>
+              
             {%else%}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'maps:maps'%}">Geolocalizacion</a> 
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'natural'%}">INaturalList</a> 
+              </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'profile'%}">Perfil </a> 
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'messenger:list'%}">Mensajes </a> 
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'singup' %}">Registro </a> 
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'logout'%}">Salir </a> 

@@ -1,0 +1,65 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Mapa{% endblock %}
+{% block content %}
+<!--{% include 'maps/includes/arc.html'%}-->
+<link rel="stylesheet" href="https://js.arcgis.com/4.10/esri/css/main.css">
+<script src="https://js.arcgis.com/4.10/"></script>
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+  <script>
+    require([
+      "esri/widgets/Sketch",
+      "esri/Map",
+      "esri/layers/GraphicsLayer",
+      "esri/views/MapView",
+      "esri/WebMap",
+    ], function(
+      Sketch, Map, GraphicsLayer, MapView
+    ) {
+
+      const layer = new GraphicsLayer();
+
+      const map = new Map({
+        basemap: "streets",
+        layers: [layer]
+      });
+
+      const view = new MapView({
+        container: "viewDiv",
+        map: map,
+        zoom: 5,
+        center: [-106.722, 28.937]
+      });
+
+      view.when(function() {
+
+        const sketch = new Sketch({
+          layer: layer,
+          view: view
+        });
+        
+        
+      layer.popupTemplate = {
+        content: "{POP_2015} people live in this census tract"
+      };
+
+        view.ui.add(sketch, "top-right");
+      });
+
+      var measurementWidget = new AreaMeasurement2D({
+        view: view
+      });
+      view.ui.add(measurementWidget, "top-right");
+    });
+  </script>
+<div id="viewDiv" class="col-md-9 mx-auto mb-5"></div>
+{% endblock %}
