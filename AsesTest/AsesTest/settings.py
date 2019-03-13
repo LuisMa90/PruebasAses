@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+    'reportlab',
     'ckeditor',
     'core',
     'messenger',
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'proyecto',
     'maps',
     'natural',
+    'reporte'
 ]
 
 MIDDLEWARE = [

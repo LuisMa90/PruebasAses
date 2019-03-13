@@ -18,6 +18,8 @@ from pages.urls import pages_patterns
 from profiles.urls import profiles_patterns
 from messenger.urls import messenger_patterns
 from maps.urls import maps_patterns
+from proyecto.urls import proyecto_patterns
+from reporte.urls import reporte_patterns
 from django.conf import settings
 
 urlpatterns = [
@@ -33,8 +35,12 @@ urlpatterns = [
     path('messenger/', include(messenger_patterns)),
     #Paths de los maps
     path('maps/',include(maps_patterns)),
-
+    #Paths de inatural
     path('natural/',include('natural.urls')),
+    #Path de los proyectos
+    path('proyecto/',include(proyecto_patterns)),
+    #Path de los reportes
+    path('reporte/',include(reporte_patterns)),
     
 ]
 
